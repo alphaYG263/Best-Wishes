@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa'
 
-// Replace this with your actual EC2 public IP or domain
-const API_BASE = 'http://13.60.156.69:5000'
+// Replace this with your actual EC2 public IP and new port
+const API_BASE = 'http://13.60.156.69:3001'
 
 export default function AuthForm() {
   const [isLogin, setIsLogin] = useState(true)
@@ -140,4 +140,3 @@ export default function AuthForm() {
     </motion.div>
   )
 }
-
