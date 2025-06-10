@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @keyframes border-glow {
+    0% {
+      transform: rotate(0deg) translateX(130%) rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg) translateX(130%) rotate(-360deg);
+    }
+  }
+
+  .animate-border-glow {
+    animation: border-glow 5s linear infinite;
+  }
+
+  .comet-glow {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffffff 0%, #00ffff 40%, #ff00ff 60%, transparent 80%);
+    box-shadow:
+      0 0 15px #00ffff,
+      0 0 30px #ff00ff,
+      0 0 45px #ffffff;
+    mix-blend-mode: screen;
+  }
+}
+
+
