@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa'
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+// Replace this with your actual EC2 public IP or domain
+const API_BASE = 'http://13.60.156.69:5000'
 
 export default function AuthForm() {
   const [isLogin, setIsLogin] = useState(true)
@@ -40,10 +41,14 @@ export default function AuthForm() {
         setMessage(data.msg || data.errors?.[0]?.msg || 'Something went wrong.')
       } else {
         setMessage('Success! 🎉')
-        localStorage.setItem('token', data.token) // optional: store token
+        // Note: localStorage won't work in Claude artifacts, but will work in your deployed app
+        if (typeof Storage !== 'undefined') {
+          localStorage.setItem('token', data.token)
+        }
       }
     } catch (err) {
       setMessage('Server error. Please try again.')
+      console.error('Error:', err)
     } finally {
       setLoading(false)
     }
